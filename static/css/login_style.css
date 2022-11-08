@@ -1,0 +1,119 @@
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 48
+}
+
+
+.conteudo-principal {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding: 85px;
+}
+
+
+.conteudo-escrito {
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+    font-family: 'Sarala', sans-serif;
+}
+
+.titulo-principal {
+    font-size: 75px;
+    font-weight: 400;
+    color: rgb(79, 79, 82);
+    line-height: 120%;
+}
+
+.subtitulo {
+    padding-left: 12px;
+}
+
+.subtitulo > a {
+    color: orange;
+}
+
+.conteudo-login {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Sarala', sans-serif;
+}
+
+.login-imagem {
+    width: 150px;
+    height: 118px;
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+}
+
+.login-email {
+    width: 310px;
+    height: 50px;
+    margin: 17px 0px 15px 0px;
+    padding: 10px;
+    background-color: rgba(189, 220, 238, 0.3);
+    border: none;
+    border-radius: 7px;
+}
+
+.senha-campo {
+    position: relative;
+}
+
+.login-senha {
+    width: 310px;
+    height: 50px;
+    padding: 10px;
+    background-color: rgba(189, 220, 238, 0.3);
+    border: none;
+    border-radius: 7px;
+    box-sizing: border-box;
+}
+
+.wrong {
+    border: 0.4px solid red;
+}
+
+.eye-icon {
+    position: absolute;
+    width: 25px;
+    top: 15px;
+    right: 10px;
+    cursor: pointer;
+}
+
+.recuperação{
+    color: rgb(165, 161, 161);
+    font-size: 12px;
+    text-align: right;
+    margin:7px 0px 25px 0px;
+
+}
+
+.conteudo-login-botão{
+    height: 45px;
+    width: 310px;
+    border-radius: 10px;
+    color: white;
+    font-size: 17px;
+    background-color: rgb(240, 159, 9);
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.divisor {
+    text-align: center;
+    margin: 45px 0 38px 0;
+    font-size: 13px;
+    color: rgb(165, 161, 161);
+}
+
+.conteudo-login-botão:hover {
+    background-color: orange;
+}

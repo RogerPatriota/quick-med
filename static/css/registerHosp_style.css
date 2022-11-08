@@ -1,0 +1,84 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+body {
+    background-color: rgb(237, 177, 65);
+    font-family:  'Roboto Condensed', sans-serif;
+}
+
+.conteudo-principal {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+    padding: 45px;
+}
+
+.logo {
+    font-size: 47px;
+}
+
+.sub-logo {
+    font-size: 20px;
+}
+
+.card-registro {
+    width: 390px;
+    height: 430px;
+    margin-top: 15px;
+    padding: 25px;
+    border-radius: 20px;
+    background-color: aliceblue;
+}
+
+.conteudo-registro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.registro-entrada {
+    width: 310px;
+    height: 40px;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 6px;
+    border: 0.1px solid rgb(81, 77, 77);
+    background-color: rgba(189, 220, 238, 0.3);
+}
+
+.campo-senha {
+    position: relative;
+}
+
+.eye-icon {
+    position: absolute;
+    width: 25px;
+    top: 18px;
+    right: 30px;
+    cursor: pointer;
+}
+
+.registro-botao {
+    width: 310px;
+    margin: 10px;
+    height: 35px;
+    border: none;
+    border-radius: 6px;
+    background-color: orange;
+    color: white;
+}
+
+.login-botao {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.login-botao > a {
+    color: rgb(201, 132, 5)
+}

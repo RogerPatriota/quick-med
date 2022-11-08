@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quick Med</title>
+
+    <link rel="stylesheet" href="{{ url_for('static',    filename='css/base_style.css') }}">
+</head>
+<body>
+    <header class="cabeçalho">
+        <div class="primeiro-menu">
+            <a href="{{ url_for('bP.home') }}" class="logo">QuickMed</a>
+            <nav class="menu-opcoes">
+                <a href="" class="menu-item">Serviços</a>
+                <a href="" class="menu-item">Planos</a>
+                <a href="" class="menu-item">Contato</a>
+            </nav>
+        </div>
+
+        <nav class="menu-usuario">
+            <div class="usuario-dados">
+                <img class="avatar-usuario" src="https://cdn-icons-png.flaticon.com/512/4625/4625853.png" alt="">
+                <p>{% block nome %} {% endblock %}</p>
+            </div>
+        </nav>
+    </header>
+
+    {% block content %}
+    {% endblock %}
+</body>
+</html>

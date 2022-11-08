@@ -1,0 +1,163 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+body {
+    font-size: 100%;
+
+}
+
+.cabeçalho {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 110px;
+    padding: 20px 0px 20px 0px;
+    font-family: 'Sarala', sans-serif;
+}
+
+.primeiro-menu{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-left: 100px;
+    gap: 30px;
+}
+
+.logo {
+    font-family: 'Roboto Condensed', sans-serif;
+    color: #FF8C00;
+    font-size: 30px;
+}
+
+.cabeçalho .menu-opcoes:last-child{
+    margin-right: 190px;
+}
+
+.menu-opcoes {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+.menu-item {
+    color: rgb(63, 59, 59);
+    font-size: 16px;
+}
+
+.menu-item-logar {
+    font-size: 16px;
+    color: rgb(63, 59, 59);
+
+}
+
+.menu-item-criar {
+    background-color: white;
+    border: none;
+    border-radius: 30px;
+    box-shadow: 4px 4px 12px rgba(50, 0, 0, 0.15);
+    color: orange;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.menu-item-criar > span {
+    margin: 15px;
+}
+
+.menu-drop {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 85px;
+    right: 165px;
+    gap: 10px;
+    box-shadow: 4px 4px 12px rgba(50, 0, 0, 0.15);
+    border-radius: 15px;
+    background-color: white;
+    padding: 15px 0 15px 0;
+}
+
+.open {
+    display: flex;
+}
+
+.menu-drop span {
+    border-bottom: 1px solid rgb(156, 146, 146);
+    padding-bottom: 10px;
+}
+
+.criar-conta {
+    color: #FF8C00;
+    margin: 0 15px 0 15px;
+}
+
+.menu-item-criar:hover {
+    background-color: orange;
+    color: white;
+}
+
+.menu-usuario {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-right: 130px;
+}
+
+.usuario-dados {
+    display: flex;
+    align-items: center;
+    flex-direction:column;
+    margin-top: 50px;
+}
+
+.usuario-dados > p {
+    margin-top: 10px;
+    background-color: rgb(239, 191, 100);
+    padding: 10px;
+    border-radius: 19px;
+    color: black;
+}
+
+.avatar-usuario {
+    width: 70px;
+    height: 70px;
+}
+
+.botao {
+    background-color: white;
+    border: none;
+    border-radius: 50px;
+    box-shadow: 4px 4px 12px rgba(50, 0, 0, 0.15);
+    color: #4461f2;
+    padding: 13px;
+    font-size: 15px;
+    margin-top: 10px;
+}
+
+.deletar-usuario {
+    color: red;
+}
+
+.nome-usuario {
+    margin-top: 10px;
+    display: none;
+}
+
+.logo > i > span:hover {
+    color: rgba(255, 255, 5, 0.733);
+}
+
+.botao:hover {
+    background-color: #435cd6;
+    color: aliceblue;
+}
+
+.deletar-usuario:hover {
+    background-color: rgb(203, 38, 38);
+    color: aliceblue;
+}
