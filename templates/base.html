@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quick Med</title>
+
+    <link rel="stylesheet" href="{{ url_for('static',    filename='css/base_style.css') }}">
+</head>
+<body>
+    <header class="cabeçalho">
+        <div class="primeiro-menu">
+            <a href="{{ url_for('bP.home') }}" class="logo">QuickMed</a>
+            <nav class="menu-opcoes">
+                <a href="" class="menu-item">Serviços</a>
+                <a href="" class="menu-item">Planos</a>
+                <a href="" class="menu-item">Contato</a>
+            </nav>
+        </div>
+
+        <nav class="menu-opcoes">
+            <a href="{{ url_for('bP.login') }}" class="menu-item-logar">Entrar</a>
+            <div class="menu-criar-conta">
+                <button href="" class="menu-item-criar" onclick="menuShow()"><span>Criar conta</span></button>
+                <div class="menu-drop">
+                    <span>
+                        <a href="{{ url_for('bP.signupUser') }}" class="criar-conta usuario">Criar como usuario</a>
+                    </span>
+                    <a href="{{ url_for('bP.signupHospital') }}" class="criar-conta hospital">Criar como hospital</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <script src="{{ url_for('static',    filename='script/base.js') }}"></script>
+
+    {% block content %}
+    {% endblock %}
+</body>
+</html>

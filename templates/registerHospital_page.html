@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faça seu registro</title>
+
+    <link rel="stylesheet" href="{{ url_for('static',    filename='css/registerHosp_style.css') }}">
+</head>
+<body>
+    <section class="conteudo-principal">
+        <h1 class="logo"><i>QuickMed</i></h1>
+        <h3>Criar conta como Instituição</h3>
+        <div class="card-registro">
+            <form class="conteudo-registro" action="/addHospital" method="POST">
+                
+                <input class="registro-entrada" type="text" name="nome" id="nome" placeholder="Nome" required>
+
+                <input class="registro-entrada" type="email" name="email" id="email" placeholder="E-mail" required>
+
+                <input class="registro-entrada" type="text" name="endereco" id="endereco" placeholder="Endereço" required>
+
+                <input class="registro-entrada" type="text" name="especialidade" id="especialidade" placeholder="Especialidade" required>
+
+                <div class="campo-senha">
+                    <input class="registro-entrada senha" type="password" name="senha"  id="senha" placeholder="Senha" required>
+                    <img class="eye-icon" id="icone" src="/static/images/view (1).png" alt="">
+                </div>
+
+                <input class="registro-botao" type="submit" value="Criar">
+            </form>
+
+            <p class="login-botao">Ja faz parte do time? <a href="{{ url_for('bP.login') }}">Entrar</a></p>
+        </div>
+    </section>
+
+    <script src="{{ url_for('static',    filename='script/eye_password.js') }}"></script>
+    <script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
+</body>
+</html>
