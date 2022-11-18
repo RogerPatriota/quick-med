@@ -48,7 +48,7 @@
                         <h1>Consultas agendadas</h1>
                         <div class="sub-servico-descricao">
                             <p>Acesse suas consultas pre-agendadas</p>
-                            <a href="">Acessar</a>
+                            <a href="{{ url_for('bP.consultas', user_id = ent.id) }}"">Acessar</a>
                         </div>
                     </div>
                     <div class="sub-servicos">
@@ -58,7 +58,7 @@
                         <h1>Marcar Nova Consulta</h1>
                         <div class="sub-servico-descricao">
                             <p>Agende uma nova consulta em um hospital de sua preferencia</p>
-                            <a href="">Acessar</a>
+                            <a href="{{ url_for('bP.appointment', user_id = ent.id) }}">Acessar</a>
                         </div>
                     </div>
                 </div>
