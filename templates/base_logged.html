@@ -11,7 +11,15 @@
 <body>
     <header class="cabeçalho">
         <div class="primeiro-menu">
-            <a href="{{ url_for('bP.home') }}" class="logo">QuickMed</a>
+
+            {% if log == 1 %} 
+                <a href="{{ url_for('bP.home_loggedHosp', hosp_id = ent.id) }}" class="logo">QuickMed</a>
+
+            {% else %}
+                <a href="{{ url_for('bP.home_loggedUser', user_id = ent.id ) }}" class="logo">QuickMed</a>
+
+            {% endif %}
+
             <nav class="menu-opcoes">
                 <a href="" class="menu-item">Serviços</a>
                 <a href="" class="menu-item">Planos</a>
@@ -21,11 +29,33 @@
 
         <nav class="menu-usuario">
             <div class="usuario-dados">
-                <img class="avatar-usuario" src="https://cdn-icons-png.flaticon.com/512/4625/4625853.png" alt="">
-                <p>{% block nome %} {% endblock %}</p>
+
+                {% if log == 1 %} 
+
+                    <button class="usuario-opcoes" onclick="menuShow()"><img class="avatar-usuario" src="https://cdn-icons-png.flaticon.com/512/4625/4625853.png" alt=""></button>
+                    <div class="menu-drop">
+                        <a href="">Alterar dados</a>
+                        <a href="">Sair da conta</a>
+                        <a href="">Deletar conta</a>
+                    </div>
+
+                {% else %}
+
+                    <button class="usuario-opcoes" onclick="menuShow()"><img class="avatar-usuario" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRP7HfJwRNoFF3Gc4HmPeYYG6alQ5HiTZ6OntLPyuAxjA&s" alt=""></button>
+                    <div class="menu-drop-usuario menu">
+                        <a class="opcao black" href="{{ url_for('bP.update_conta', user_id = ent.id ) }}">Alterar dados</a>
+                        <a class="opcao red" href="{{ url_for('bP.logoff') }}">Sair da conta</a>
+                        <hr color="grey" size="0.3">
+                        <a class="opcao red" href="{{ url_for('bP.deletar_conta', user_id = ent.id ) }}">Deletar conta</a>
+                    </div>
+                {% endif %}
+                    <p>{% block nome %} {% endblock %}</p>
+
             </div>
         </nav>
     </header>
+
+    <script src="{{ url_for('static',    filename='script/base.js') }}"></script>
 
     {% block content %}
     {% endblock %}
