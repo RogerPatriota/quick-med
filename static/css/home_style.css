@@ -67,7 +67,7 @@ body {
     margin-top: 15px;
 }
 
-.conteudo-secundario > h1 {
+.conteudo-secundario>h1 {
     text-align: center;
     font-size: 37px;
 }
@@ -97,7 +97,7 @@ body {
     text-align: center;
 }
 
-.sub-servicos-imagem > img {
+.sub-servicos-imagem>img {
     border-radius: 10px;
     width: 280px;
     height: 180px;
@@ -136,7 +136,8 @@ body {
 }
 
 .sub-servicos:hover {
-    background-color: orange;;
+    background-color: orange;
+    ;
     color: white;
     margin-top: -30px;
     box-shadow: 2px 20px 25px rgb(194, 126, 1);
@@ -151,8 +152,8 @@ body {
     color: white;
 }
 
-.serviços .sub-servico:hover .sub-servico-descricao a{
-    color:black;
+.serviços .sub-servico:hover .sub-servico-descricao a {
+    color: black;
     background-color: white;
 }
 
@@ -191,7 +192,7 @@ body {
     margin-top: 120px;
 }
 
-.depoimento{
+.depoimento {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -241,4 +242,21 @@ body {
 
 .card-comentario p {
     line-height: 25px;
+}
+
+.rodape {
+    font-size: 20px;
+    text-align: center;
+    background-color: orange;
+    height: 105px;
+    padding-top: 25px;
+    color: white;
+}
+
+.contato {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    gap: 10px;
 }
