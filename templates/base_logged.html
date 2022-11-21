@@ -33,10 +33,11 @@
                 {% if log == 1 %} 
 
                     <button class="usuario-opcoes" onclick="menuShow()"><img class="avatar-usuario" src="https://cdn-icons-png.flaticon.com/512/4625/4625853.png" alt=""></button>
-                    <div class="menu-drop">
-                        <a href="">Alterar dados</a>
-                        <a href="">Sair da conta</a>
-                        <a href="">Deletar conta</a>
+                    <div class="menu-drop-usuario menu">
+                        <a href="{{ url_for('bP.update_conta', user_id = ent.id ) }}" class="opcao black">Alterar dados</a>
+                        <a href="{{ url_for('bP.logoff') }}" class="opcao red">Sair da conta</a>
+                        <hr color="grey" size="0.3">
+                        <a href="" class="opcao red" >Deletar conta</a>
                     </div>
 
                 {% else %}
