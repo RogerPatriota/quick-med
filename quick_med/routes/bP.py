@@ -81,8 +81,6 @@ def valida_login():
     user_query = Usuario.query.filter_by(email = eEmail, senha = eSenha).first()
     hosp_query = Hospital.query.filter_by(email = eEmail, senha = eSenha).first()
 
-    print(user_query)
-    print(hosp_query)
     if user_query == None and hosp_query == None:
         flash('')
         return redirect(url_for('bP.login'))
