@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quick Med - Evite filas</title>
+
+    <link rel="stylesheet" href="{{ url_for('static',    filename='css/home_style.css') }}">
+</head>
+<body>
+    {% if ent is none %}
+        {% extends 'base.html' %}
+    {% else %}
+        {% extends 'base_logged.html' %}
+    {% endif %}
+
+    {% block content %}
+        <main>
+            
+            <div style="display: None;">
+                {% block nome %} {{ent.nome}} {% endblock %}
+            </div>
+
+            <section class="conteudo-principal">  
+                <h1 class="bem-vindo">Nunca mais gaste horas em filas de hospitais!</h1>
+                <div class="noticia-principal">
+                    <div class="conteudo-escrito">
+                        <h2 class="titulo-noticia"><a>Evite dor de cabeça e filas!</a></h2>
+                        <p class="descricao-noticia">Quando vamos ao hospital, é normal sairmos frustados e inpacientes com a filas, 
+                            problemas
+                            pequenos se tornam grandes. Com a QuickMed, voce pode evitar essas dores de cabeças,
+                            tendo controle da sua posição e quando sera atendido pelo medico.
+                            <br>
+                            Tudo isso com apenas alguns cliques em nosso site ou app
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="conteudo-secundario">
+                <h1>Nossos serviços</h1>
+                <div class="serviços">
+                    <div class="sub-servicos">
+                        <div class="sub-servicos-imagem">
+                            <img src="/static/images/doctor_pic.svg" alt="">
+                        </div>
+                        <h1>Consultas agendadas</h1>
+                        <div class="sub-servico-descricao">
+                            <p>Acesse suas consultas pre-agendadas</p>
+                            <a href="{{ url_for('bP.consultas', user_id = ent.id) }}"">Acessar</a>
+                        </div>
+                    </div>
+                    <div class="sub-servicos">
+                        <div class="sub-servicos-imagem">
+                            <img src="/static/images/schedule.svg" alt="">
+                        </div>
+                        <h1>Marcar Nova Consulta</h1>
+                        <div class="sub-servico-descricao">
+                            <p>Agende uma nova consulta em um hospital de sua preferencia</p>
+                            <a href="{{ url_for('bP.appointment', user_id = ent.id) }}">Acessar</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="conteudo-terciario">
+                <div class="titulo-parceiros">
+                    <hr size="5" width="40%" align="left" color="black">
+                    <h1>Parceiros</h1>
+                    <hr size="5" width="40%" align="right" color="black">
+                </div>
+                <div class="parceiros">
+                    <img class="logo-parceiros" src="https://www.gndi.com.br/GNDI-Portal-theme/images/logoRoseta.png" alt="">
+                    <img class="logo-parceiros" src="data:image/png;base64,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" alt="">
+                    <img class="logo-parceiros" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2q0RW3VZK92MqSb6w-xddWXSjjvBEo8kryQu13xEoZGh_-N3fAN2EoerixJPrvwxMaaE&usqp=CAU" alt="">
+                    <img class="logo-parceiros" src="https://logospng.org/download/amil/logo-amil-2048.png" alt="">
+                    <img class="logo-parceiros" src="https://logodownload.org/wp-content/uploads/2014/05/unimed-logo-1-2.png" alt="">
+                </div>
+            </section>
+
+            <section class="conteudo-quartenario">
+                <div class="depoimento">
+                    <div class="comentario">
+                        <h1>DEPOIMENTOS</h1>
+                        <P>Diversos clientes utilizaram nosso serviço e hoje não vivem sem! <br>
+                            O QuickMed nasceu de uma dor compartilhda por todos nós, as tecnologias avançam a cada segundo, mas muitos pontos acabam ficando esquecidos
+                            A frustaçãod e voce ficar horas esperando seu atendimento, sem sebar quantas pessoas estão na sua frente é inadimicivel! <br>
+                            Nos damos controle total a voce! Sinta-se livre para ir ao banheiro ou em alguma loja enquanto aguarda, sem medo de perder a sua consulta!
+                        </P>
+                    </div>
+                    <div class="card-comentario">
+                        <div class="perfil">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSaEn6czanv3XmpyqF8cA5_2_qpojA4XyqSUg&usqp=CAU" alt="">
+                            <p>Vanessa</p>
+                        </div>
+                        <p>Minha experiencia com a QuickMed fo fantastica!!
+                            Desde o contato inicial com o site quanto o app funcionaram perfeitamente! Super rapido e eficiente.
+                            A equipe de suporte tecnico se mostrou a disposição para me ajudar com meu problema de login<br>
+                            O QuickMed nasceu de uma dor compartilhda por todos nós, as tecnologias avançam a cada segundo, mas muitos pontos acabam ficando esquecidos.
+
+                        </p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="rodape">
+            <h4>Direitos reservados a QuickMed</h4>
+            <div class="contato">
+                <p>contato@quickmed.com</p>
+                <p>(11) 95039543</p>             
+            </div>
+        </footer>  
+    {% endblock %}
+</body>
+</html>

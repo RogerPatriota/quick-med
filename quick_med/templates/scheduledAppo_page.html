@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultas Agendadas</title>
+
+    <link rel="stylesheet" href="{{ url_for('static',    filename='css/appointment_style.css') }}">
+</head>
+<body>
+    {% extends 'base_logged.html' %}
+    {% block content %}
+
+    <div style="display: None;">
+        {% block nome %} {{ent.nome}} {% endblock %}
+    </div>
+
+    <h1 id="titulo-principal" style="margin-top: 100px"><span>Suas consultas agendadas:</span></h1>
+    <section class="conteudo-principal">
+        <section class="lista-hospital">
+            <div class="titulos">
+                <p class="item">Nome</p>
+                <p class="item">endereco</p>
+                <p class="item">especialidade</p>
+                <p class="item"></p>
+            </div>
+            {% for consulta in consultas %}
+            <div class="hospital">
+                <p class="item carac-hospital"> {{ consulta.hospital.nome }} </p>
+                <p class="item carac-hospital"> {{ consulta.hospital.endereco }} </p>
+                <p class="item carac-hospital"> {{ consulta.hospital.especialidade }}</p>
+                <a class="item botao-consulta" href="http://s.glbimg.com/jo/g1/f/original/2011/05/17/qrcode.jpg" target="_blank">Acessar o QRCode</a>
+            </div>
+            {% endfor %}
+        </section>
+    </section>
+    {% endblock %}
+</body>
+</html>
