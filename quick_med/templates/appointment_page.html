@@ -38,21 +38,21 @@
                 <p class="item"></p>
             </div>
 
-            <form action="/addConsulta" method="POST">
             {% for hosp in hosps %}
             <div class="hospital">
                 <p class="item carac-hospital"> {{ hosp.nome }} </p>
                 <p class="item carac-hospital"> {{ hosp.endereco }} </p>
                 <p class="item carac-hospital"> {{ hosp.especialidade }}</p>
 
-                <input type="hidden" name="hosp" value="{{hosp.id}}">
-                <input type="hidden" name="user" value="{{user.id}}">
+                <form action="/addConsulta" method="POST">
+                    <input type="hidden" name="hosp" value="{{hosp.id}}">
+                    <input type="hidden" name="user" value="{{user.id}}">
 
-                <!-- <input class="item botao-consulta" type="hidden" value="Marcar consulta" > -->
-                <a class="item botao-consulta" href="{{ url_for('bP.cria_consulta', hosp_id = hosp.id, user_id = user.id ) }}">Marcar consulta</a>
+                    <input class="item botao-consulta" type="submit" value="Marcar consulta" >
+                </form>
+                <!-- <a class="item botao-consulta" href="{{ url_for('bP.cria_consulta', hosp_id = hosp.id, user_id = user.id ) }}">Marcar consulta</a> -->
             </div>
             {% endfor %}
-            </form>
         </section>
     </section>
 
