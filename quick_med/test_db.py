@@ -124,6 +124,30 @@ class FlaskTestCas(unittest.TestCase):
         with self.client.session_transaction() as session:
             self.assertEqual(session['hospital_logado'], self.hosp_fixture.id)
 
+    def test_update_user(self):
+        user_data = {
+            'id': self.user_fixture.id,
+            'nome': 'Nath',
+            'email': self.user_fixture.email,
+            'senha': self.user_fixture.senha
+        }
+
+        response = self.client.put('/upd', data=user_data, follow_redirects=True)
+
+        self.assertEqual(response.status_code, 200)
+
+        user_db = db.session.query(Usuario).filter_by(id = self.user_fixture.id).first()
+        self.assertIsNotNone(user_db)
+        self.assertEqual(user_db.id, user_data['id'])
+        self.assertEqual(user_db.nome, user_data['nome'])
+
+    def test_user_appt(self):
+
+        response = self.client.get(f'/consultasAgendadas/{self.user_fixture.id}')
+
+        self.assertEqual(response.status_code, 200)
+        
+        
 
 if __name__ == '__main__':
     unittest.main()

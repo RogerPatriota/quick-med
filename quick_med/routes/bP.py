@@ -158,7 +158,7 @@ def update_conta(user_id=0):
 
     return render_template('update_page.html', user=user_query, ent=user_query)
 
-@bP.route('/upd', methods=['POST'])
+@bP.route('/upd', methods=['PUT'])
 def update_user():
     uId = request.form["id"]
     uNome = request.form["nome"]
