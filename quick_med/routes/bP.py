@@ -100,8 +100,10 @@ def appointment(user_id=0):
     hosp_query = Hospital.query.all()
     return render_template('appointment_page.html', user = user_query, hosps = hosp_query, ent=user_query)
 
-@bP.route('/addConsulta/<hosp_id>/<user_id>')
-def cria_consulta(hosp_id=0, user_id = 0):
+@bP.route('/addConsulta', methods=['POST'])
+def cria_consulta():
+    hosp_id = request.form["hosp"]
+    user_id = request.form["user"]
 
     user_query = Usuario.query.filter_by(id = user_id).first()
     hosp_query = Hospital.query.filter_by(id = hosp_id).first()

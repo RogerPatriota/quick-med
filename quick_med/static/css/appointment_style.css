@@ -63,6 +63,7 @@ body {
     justify-content: space-between;
     align-items: center;
     border-top: 3px solid orange;
+    gap: 40px;
     padding: 30px;
 }
 
