@@ -2,7 +2,7 @@ import unittest
 
 from quick_med import create_app
 from .extensions import db
-from .models.banco import Hospital, Usuario
+from .models.banco import Hospital, Usuario, Consulta
 
 class FlaskTestCas(unittest.TestCase):
 
@@ -87,10 +87,43 @@ class FlaskTestCas(unittest.TestCase):
 
     # Teste no endpoint de criação de consulta
     def test_create_appt(self):
-        response = self.client.post(f'/addConsulta/{self.hosp_fixture.id}/{self.user_fixture.id}')
+        appt_data = {
+            'user': self.user_fixture.id,
+            'hosp': self.hosp_fixture.id
+        }
 
+        response = self.client.post(f'/addConsulta', data=appt_data, follow_redirects=True)
+
+        self.assertEqual(response.status_code, 200)
+
+        appt_db = db.session.query(Consulta).filter_by(idUser = appt_data['user']).first()
+        self.assertIsNotNone(appt_db)
+        self.assertEqual(appt_db.idHospitail, appt_data['hosp'])
+    
+    def test_login_user(self):
+        user_data = {
+            'email': self.user_fixture.email,
+            'senha': self.user_fixture.senha
+        }
+
+        response = self.client.post('/vld', data=user_data, follow_redirects=True)
+
+        self.assertEqual(response.status_code, 200)
+        with self.client.session_transaction() as session:
+            self.assertEqual(session['usuario_logado'], self.user_fixture.id)
+
+    def test_login_hosp(self):
+        hops_data = {
+            'email': self.hosp_fixture.email,
+            'senha': self.hosp_fixture.senha
+        }
         
-        
+        response = self.client.post('/vld', data=hops_data, follow_redirects=True)
+
+        self.assertEqual(response.status_code, 200)
+        with self.client.session_transaction() as session:
+            self.assertEqual(session['hospital_logado'], self.hosp_fixture.id)
+
 
 if __name__ == '__main__':
     unittest.main()
