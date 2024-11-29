@@ -23,6 +23,8 @@ class FlaskTestCas(unittest.TestCase):
         self.user_fixture = self.create_user()
         # fixture hospital
         self.hosp_fixture = self.create_hosp()
+        # fixture appointment
+        self.appt_fixture = self.create_appt()
 
     def tearDown(self):
         db.session.remove()
@@ -45,6 +47,14 @@ class FlaskTestCas(unittest.TestCase):
         db.session.commit()
 
         return hosp
+
+    def create_appt(self):
+        appt = Consulta(usuario=self.user_fixture, hospital=self.hosp_fixture)
+        db.session.add(appt)
+        db.session.commit()
+
+        return appt
+
 
     # Teste de criação do banco em memoria
     def test_database(self):
@@ -140,14 +150,32 @@ class FlaskTestCas(unittest.TestCase):
         self.assertIsNotNone(user_db)
         self.assertEqual(user_db.id, user_data['id'])
         self.assertEqual(user_db.nome, user_data['nome'])
+    
+    def test_delete_user(self):
+        user_data = {
+            'id': self.user_fixture.id
+        }
+
+        response = self.client.post('/deletar', data=user_data, follow_redirects=True)
+
+        self.assertEqual(response.status_code, 200)
+
+        user_db = db.session.query(Usuario).filter_by(id=user_data['id']).first()
+        appt_db = db.session.query(Consulta).filter_by(idUser=user_data['id']).first()
+        self.assertIsNone(user_db)
+        self.assertIsNone(appt_db)
 
     def test_user_appt(self):
 
         response = self.client.get(f'/consultasAgendadas/{self.user_fixture.id}')
 
         self.assertEqual(response.status_code, 200)
+
+        self.assertEqual(self.appt_fixture.idUser, self.user_fixture.id)
+
+    
         
-        
+    
 
 if __name__ == '__main__':
     unittest.main()
