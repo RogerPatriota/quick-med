@@ -2,20 +2,18 @@ from unittest import TestCase
 from unittest.mock import patch, MagicMock
 from quick_med.routes.bP import consultas
 from quick_med import create_app
+from quick_med.models.banco import Usuario, Hospital
 
-class TestConsultasUnitario(TestCase):
+class TestUnit(TestCase):
     
     def setUp(self):
-        # Cria a aplicação Flask
         self.app = create_app()
         self.app.config['TESTING'] = True
 
-        # Ativa o contexto de aplicação
         self.app_context = self.app.app_context()
         self.app_context.push()
 
     def tearDown(self):
-        # Remove o contexto de aplicação após cada teste
         self.app_context.pop()
 
     @patch("quick_med.routes.bP.Usuario.query")
@@ -38,5 +36,17 @@ class TestConsultasUnitario(TestCase):
         mock_usuario_query.filter_by.assert_called_once_with(id=1)
         mock_consulta_query.filter_by.assert_called_once_with(idUser=1)
 
-        # Você pode validar o comportamento esperado aqui
-        # (ex.: verificar se o template correto seria renderizado)
+    @patch("quick_med.routes.bP.Usuario.query")
+    def test_get_user_by_id(self, mock_usuario_query):
+        mock_usuario_query.get.return_value = None
+
+        user = Usuario.query.get(100)
+
+        self.assertIsNone(user)
+
+        mock_usuario_query.get.return_value = MagicMock(id=1, nome="Test User")
+
+        user = Usuario.query.get(1)
+
+        self.assertEqual(user.id, 1)
+        self.assertEqual(user.nome, "Test User")
